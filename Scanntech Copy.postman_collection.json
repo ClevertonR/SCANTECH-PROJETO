@@ -1,0 +1,167 @@
+{
+	"info": {
+		"_postman_id": "3e0f8299-a2cd-424c-86e5-c0b0f44adf86",
+		"name": "Scanntech Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21024745"
+	},
+	"item": [
+		{
+			"name": "Transmitir Vendas",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"total\": 12,\r\n    \"codigoMoneda\": \"986\",\r\n    \"cotizacion\": 1.00,\r\n    \"fecha\": \"2020-08-13T09:24:00.000-0300\",\r\n    \"documentoCliente\": null,\r\n    \"descuentoTotal\": 0,\r\n    \"recargoTotal\": null,\r\n    \"cancelacion\": false,\r\n    \"numero\": \"000001\",\r\n    \"pagos\": [{\r\n        \"codigoTarjeta\": null,\r\n        \"importe\": 12,\r\n        \"codigoTipoPago\": 9,\r\n        \"codigoMoneda\": \"986\",\r\n        \"cotizacion\": 1.00,\r\n        \"documentoCliente\": null,\r\n        \"bin\": null\r\n    }],\r\n    \"detalles\": [{\r\n        \"importe\": 12,\r\n        \"recargo\": 0,\r\n        \"clasificacionDescuento\": null,\r\n        \"descuento\": 0,\r\n        \"codigoArticulo\": \"00015223214\",\r\n        \"cantidad\": 10,\r\n        \"importeUnitario\": 1.2,\r\n        \"codigoBarras\": \"0086485653412\",\r\n        \"descripcionArticulo\": \"Coca-Cola 600ML\"\r\n    }]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url_homo_vendas}}/v2/minoristas/{{codigoEmpresa}}/locales/{{idLocal}}/cajas/108/movimientos",
+					"host": [
+						"{{base_url_homo_vendas}}"
+					],
+					"path": [
+						"v2",
+						"minoristas",
+						"{{codigoEmpresa}}",
+						"locales",
+						"{{idLocal}}",
+						"cajas",
+						"108",
+						"movimientos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fechamento",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"montoVentaLiquida\": 23.2,\r\n   \"montoCancelaciones\": 7.2,\r\n   \"cantidadMovimientos\": 7,\r\n   \"fechaVentas\": \"2020-08-11\",\r\n   \"cantidadCancelaciones\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url_homo_vendas}}/v2/minoristas/{{codigoEmpresa}}/locales/{{idLocal}}/cajas/108/cierresDiarios",
+					"host": [
+						"{{base_url_homo_vendas}}"
+					],
+					"path": [
+						"v2",
+						"minoristas",
+						"{{codigoEmpresa}}",
+						"locales",
+						"{{idLocal}}",
+						"cajas",
+						"108",
+						"cierresDiarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Promoções",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_homologacao_promo}}/pmkt-rest-api/v2/minoristas/{{codigoEmpresa}}/locales/{{idLocal}}/promociones?estado=ACEPTADA",
+					"host": [
+						"{{base_url_homologacao_promo}}"
+					],
+					"path": [
+						"pmkt-rest-api",
+						"v2",
+						"minoristas",
+						"{{codigoEmpresa}}",
+						"locales",
+						"{{idLocal}}",
+						"promociones"
+					],
+					"query": [
+						{
+							"key": "estado",
+							"value": "ACEPTADA"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "integrador",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "integrador_test@linearsistemas.com.br",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url_homo_vendas",
+			"value": "http://br.homo.apipdv.scanntech.com/api-minoristas/api",
+			"type": "string"
+		},
+		{
+			"key": "base_url_homo_promo",
+			"value": "http://br.homo.apipdv.scanntech.com/api-minoristas/api",
+			"type": "string"
+		},
+		{
+			"key": "codigoEmpresa",
+			"value": "33321",
+			"type": "string"
+		},
+		{
+			"key": "idLocal",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "base_url_homologacao_promo",
+			"value": "http://br.homo.apipdv.scanntech.com/",
+			"type": "string"
+		}
+	]
+}
